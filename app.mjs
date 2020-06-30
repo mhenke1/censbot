@@ -32,7 +32,8 @@ app.post('/uuid', function (request, response) {
                 "text": responseText
             }
         }
-    ]
+    ],
+    "type": "home"
   }
   response.send(responseJSON);
 });
