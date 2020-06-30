@@ -26,14 +26,13 @@ app.post('/uuid', function (request, response) {
     "blocks": [
         {
             "type": "section",
-            "response_type": "in_channel",
             "text": {
                 "type": "mrkdwn",
                 "text": responseText
             }
         }
     ],
-    "type": "home"
+    "response_type": "in_channel"
   }
   response.send(responseJSON);
 });
