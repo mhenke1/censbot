@@ -12,14 +12,18 @@ app.use(bodyParser.json())
 app.post('/uuid', function (request, response) {
   let reuqestUUID = request.body.text.trim();
   console.log(reuqestUUID);
-  let responseText = "No able to convert any namespace name"
+  let responseText = "No able to convert the given input `" + reuqestUUID + "`";
 
   if (validator.isUUID(reuqestUUID)) {
     let base58UUID = uuid58.encode(reuqestUUID);
-    responseText = "The namespace name for the UUID `" + reuqestUUID + "` is `" + base58UUID + "`"
+    responseText = "The namespace name for the UUID `" + reuqestUUID + "` is `" + base58UUID + "`";
   } else if (reuqestUUID.length <= 22) {
     let longUUID = uuid58.decode(reuqestUUID);
-    responseText = "The UUID for the namespace `" + reuqestUUID + "` is `" + longUUID + "`"
+    if (validator.isUUID(longUUID)) {
+      responseText = "The UUID for the namespace `" + reuqestUUID + "` is `" + longUUID + "`";
+    } else {
+      responseText = "No able to convert the namespace name `" + reuqestUUID + "` to a valid UUID";
+    }
   }
   
   let responseJSON = {
