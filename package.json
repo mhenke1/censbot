@@ -14,7 +14,7 @@
   "dependencies": {
     "cfenv": "~1.2.2",
     "express": "~4.17.1",
-    "uuid-base58": "~1.0.1",
+    "uuid-encoder": "~1.2.0",
     "validator": "~13.1.1",
     "body-parser": "~1.19.0"
   },
