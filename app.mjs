@@ -1,10 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import uuid58 from 'uuid-base58';
 import validator from 'validator';
+import UuidEncoder from 'uuid-encoder';
 
 'use strict';
 const app = express();
+const base36Encoder = new UuidEncoder('base36');
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -12,13 +13,14 @@ app.use(bodyParser.json())
 app.post('/uuid', function (request, response) {
   let reuqestUUID = request.body.text.trim();
   console.log(reuqestUUID);
+
   let responseText = "No able to convert the given input `" + reuqestUUID + "`";
 
   if (validator.isUUID(reuqestUUID)) {
-    let base58UUID = uuid58.encode(reuqestUUID);
-    responseText = "The namespace name for the UUID `" + reuqestUUID + "` is `" + base58UUID + "`";
-  } else if (reuqestUUID.length <= 22) {
-    let longUUID = uuid58.decode(reuqestUUID);
+    let base36UUID = base36Encoder.encode(reuqestUUID);
+    responseText = "The namespace name for the UUID `" + reuqestUUID + "` is `" + base36UUID + "`";
+  } else if (reuqestUUID.length <= 25) {
+    let longUUID = base36Encoder.decode(reuqestUUID);
     if (validator.isUUID(longUUID)) {
       responseText = "The UUID for the namespace `" + reuqestUUID + "` is `" + longUUID + "`";
     } else {
