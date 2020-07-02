@@ -37,8 +37,7 @@ app.post('/uuid', function (request, response) {
                 "text": responseText
             }
         }
-    ],
-    "response_type": "in_channel"
+    ]
   }
   response.send(responseJSON);
 });
