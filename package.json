@@ -1,26 +1,16 @@
 {
-  "name": "censbot",
-  "main": "app.js",
-  "description": "Code Engien Namespace Decoder",
-  "version": "0.1.1",
-  "private": false,
-  "type": "module",
-  "engines": {
-    "node": "12.18.1"
-  },
+  "name": "censbot-convert",
+  "main": "dist/bundle.js",
   "scripts": {
-    "start": "node app.mjs"
+    "build": "webpack --config webpack.config.js",
+    "deploy": "ibmcloud fn action update censbot-base32 dist/bundle.js --kind nodejs:10"
   },
   "dependencies": {
-    "cfenv": "~1.2.2",
-    "express": "~4.17.1",
     "uuid-encoder": "~1.2.0",
-    "validator": "~13.1.1",
-    "body-parser": "~1.19.0"
+    "validator": "~13.1.1"
   },
-  "author": "Martin Henke",
   "devDependencies": {
-    "eslint": "~7.3.1",
-    "eslint-config-loopback": "~13.1.0"
+    "webpack": "^3.8.1",
+    "eslint": "^7.4.0"
   }
 }
