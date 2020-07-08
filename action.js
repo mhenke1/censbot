@@ -37,7 +37,7 @@ function convertId(params) {
         'type': 'section',
         'text': {
           'type': 'mrkdwn',
-          'text': '_censbot is powered by_ :cloudfunctions-whitecircle: _IBM Cloud Functions_',
+          'text': '_powered by IBM Cloud Functions_ :cloudfunctions-whitecircle:',
         },
       },
     ],
