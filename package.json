@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "uuid-encoder": "~1.2.0",
-    "validator": "~13.1.1"
+    "validator": "~13.7.0"
   },
   "devDependencies": {
     "eslint": "^7.4.0",
